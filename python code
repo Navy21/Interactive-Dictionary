@@ -11,9 +11,9 @@ def meaning(w):
     if w in dataset:
         return dataset[w]
     elif w.upper() in dataset:  # upper() method is used to convert input to uppercase string: APPLE
-        return dataset[w]
+        return dataset[w.upper()]
     elif w.title() in dataset:  # title() method is used to convert input to string with first letter capitalized: Apple
-        return dataset[w]
+        return dataset[w.title()]
     elif len(get_close_matches(w, dataset.keys())) > 0:
         yn = input("Did you mean %s instead? Enter Y if yes, or N if no: " % get_close_matches(w, dataset.keys())[0])
         if yn == "Y":
