@@ -1,8 +1,8 @@
 import json
 from difflib import get_close_matches
 
-# if the dataset is in the working directory of python file, we can directly open dataset directly by using open()
-# method.otherwise entire path has to be included.
+# if the dataset is in the working directory of python file, we can open dataset directly by using open(dataset name)
+# method. otherwise entire path has to be included in the parenthesis.
 dataset = json.load(open("dataset.json"))
 
 
@@ -15,10 +15,10 @@ def meaning(w):
     elif w.title() in dataset:  # title() method is used to convert input to string with first letter capitalized: Apple
         return dataset[w.title()]
     elif len(get_close_matches(w, dataset.keys())) > 0:
-        yn = input("Did you mean %s instead? Enter Y if yes, or N if no: " % get_close_matches(w, dataset.keys())[0])
-        if yn == "Y":
+        key = input("Did you mean {0} instead? Enter 0 if yes, or 1 if no: ".format(get_close_matches(w, dataset.keys())[0]))
+        if key == "0":
             return dataset[get_close_matches(w, dataset.keys())[0]]
-        elif yn == "N":
+        elif key == "1":
             return "The word doesn't exist. Please double check it."
         else:
             return "We didn't understand your entry."
